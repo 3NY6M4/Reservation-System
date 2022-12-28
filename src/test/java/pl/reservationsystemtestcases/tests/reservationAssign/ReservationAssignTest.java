@@ -11,76 +11,78 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import pl.reservationsystemtestcases.request.reservationAssign.ReservationAssignRequest;
 import pl.reservationsystemtestcases.request.reservationCreate.ReservationCreateRequest;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.stream.Stream;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationAssignTest {
 
-    private String supplierId;
-    private String productId;
-    private static String quantity;
-    private static String itemId;
-    private static String partId;
-    private String isComponent = "false";
-
-    private String reservationId;
+    private int reservationId;
 
     @Order(1)
     @DisplayName("Create unassign reservation with valid data")
     @ParameterizedTest
-    @MethodSource("sampleReservationData")
-    void createUnAssignReservationTest(String supplierId, String productId, String quantity, String isComponent) {
+    @MethodSource("sampleCreateReservationData")
+    void createUnAssignReservationTest(String referrer, String source, int supplierId, int productId, int quantity, int operatorId) {
+
         JSONObject payload = new JSONObject();
+        payload.put("referrer", referrer);
+        payload.put("source", source);
         payload.put("supplierId", supplierId);
         payload.put("productId", productId);
         payload.put("quantity", quantity);
-        payload.put("isComponent", isComponent);
+        payload.put("operatorId", operatorId);
 
-        final Response creteReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload);
-        Assertions.assertThat(creteReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
+        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload);
+        Assertions.assertThat(createReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
-        JsonPath json = creteReservationResponse.jsonPath();
-        Assertions.assertThat(json.getString("supplierId")).isEqualTo(supplierId);
-        Assertions.assertThat(json.getString("productId")).isEqualTo(productId);
-        Assertions.assertThat(json.getString("quantity")).isEqualTo(quantity);
+        JsonPath json = createReservationResponse.jsonPath();
+        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierId);
+        Assertions.assertThat(json.getInt("productId")).isEqualTo(productId);
+        Assertions.assertThat(json.getInt("quantity")).isEqualTo(quantity);
+
+        reservationId = json.getInt("id");
 
     }
 
-    private static Stream<Arguments> sampleReservationData() {
+    private static Stream<Arguments> sampleCreateReservationData() {
         return Stream.of(
-                Arguments.of("3323", "696969", "69"),
-                Arguments.of("1133", "131313", "96")
+                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 69),
+                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 69)
         );
     }
     @Order(2)
     @DisplayName("Assign a reservation with valid data")
     @ParameterizedTest
     @MethodSource("sampleAssignReservationData")
-    void assignReservationTest(String supplierId, String productId, String quantity, String itemId, String partId, String isComponent) {
-        Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("supplierId", supplierId);
-        queryParams.put("productId", productId);
-        queryParams.put("quantity", quantity);
-        queryParams.put("itemId", itemId);
-        queryParams.put("partId", partId);
-        queryParams.put("isComponent", isComponent);
+    void assignReservationTest(String referrer, String source, int supplierId, int productId, int quantity, int itemId, int partId, int operatorId, int reservationId) {
 
-        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(queryParams);
+        JSONObject payload = new JSONObject();
+        payload.put("referrer", referrer);
+        payload.put("source", source);
+        payload.put("id", reservationId);
+        payload.put("supplierId", supplierId);
+        payload.put("productId", productId);
+        payload.put("quantity", quantity);
+        payload.put("operatorId", operatorId);
+        payload.put("itemId", itemId);
+        payload.put("partId", partId);
+
+        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(payload, reservationId);
         Assertions.assertThat(assignReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = assignReservationResponse.jsonPath();
-        Assertions.assertThat(json.getString("supplierId")).isEqualTo(supplierId);
-        Assertions.assertThat(json.getString("productId")).isEqualTo(productId);
-        Assertions.assertThat(json.getString("quantity")).isEqualTo(quantity);
-        Assertions.assertThat(json.getString("itemId")).isEqualTo(itemId);
-        Assertions.assertThat(json.getString("partId")).isEqualTo(partId);
+        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
+        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierId);
+        Assertions.assertThat(json.getInt("productId")).isEqualTo(productId);
+        Assertions.assertThat(json.getInt("quantity")).isEqualTo(quantity);
+        Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
+        Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
     }
     private static Stream<Arguments> sampleAssignReservationData() {
         return Stream.of(
-                Arguments.of("3323", "696969", "69", "1", "0"),
-                Arguments.of("1133", "131313", "96", "1", "0")
+                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 8, 32, 69, 1),
+                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 8, 33, 69, 1)
         );
     }
 }

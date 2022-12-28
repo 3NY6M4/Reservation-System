@@ -47,10 +47,10 @@ public class ReservationForceTest {
 
     private static Stream<Arguments> sampleForceReservationData() {
         return Stream.of(
-                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 1, 9, 69),
-                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 1, 10, 69),
-                Arguments.of("PANEL", "item list - supplier change", 1133, 374083, 1001, 1, 11, 69),
-                Arguments.of("PANEL", "item list - supplier change", 3323, 1689571, 1001, 1, 12, 69)
+                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 1, 41, 69),
+                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 1, 42, 69),
+                Arguments.of("PANEL", "item list - supplier change", 1133, 374083, 1001, 1, 43, 69),
+                Arguments.of("PANEL", "item list - supplier change", 3323, 1689571, 1001, 1, 44, 69)
         );
     }
 }

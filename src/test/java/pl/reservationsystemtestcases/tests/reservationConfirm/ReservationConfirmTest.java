@@ -23,14 +23,7 @@ import java.util.stream.Stream;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationConfirmTest {
 
-    private static String supplierId;
-    private static String productId;
-    private static String quantity;
-    private static String itemId;
-    private static String partId;
-    private static String isComponent = "false";
-
-    private static String reservationId;
+    private static int reservationId;
 
     @Order(1)
     @DisplayName("Create unassign reservation with valid data")
@@ -65,16 +58,19 @@ public class ReservationConfirmTest {
     @DisplayName("Assign a reservation with valid data")
     @ParameterizedTest
     @MethodSource("sampleAssignReservationData")
-    void assignReservationTest(String supplierId, String productId, String quantity, String itemId, String partId, String isComponent) {
-        Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("supplierId", supplierId);
-        queryParams.put("productId", productId);
-        queryParams.put("quantity", quantity);
-        queryParams.put("itemId", itemId);
-        queryParams.put("partId", partId);
-        queryParams.put("isComponent", isComponent);
+    void assignReservationTest(String referrer, String source, int supplierId, int productId, int quantity, int itemId, int partId, int operatorId) {
 
-        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(queryParams);
+        JSONObject payload = new JSONObject();
+        payload.put("referrer", referrer);
+        payload.put("source", source);
+        payload.put("supplierId", supplierId);
+        payload.put("productId", productId);
+        payload.put("quantity", quantity);
+        payload.put("itemId", itemId);
+        payload.put("partId", partId);
+        payload.put("operatorId", operatorId);
+
+        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(payload, reservationId);
         Assertions.assertThat(assignReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = assignReservationResponse.jsonPath();
