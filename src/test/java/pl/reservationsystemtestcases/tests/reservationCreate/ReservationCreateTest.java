@@ -18,8 +18,8 @@ import java.util.stream.Stream;
 //@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationCreateTest {
 
-    private String referrer = "PANEL";
-    private String source = "item list - supplier change";
+    private String referrer ;
+    private String source ;
     private int supplierId;
     private int productId;
     private int quantity;
@@ -33,7 +33,7 @@ public class ReservationCreateTest {
     @DisplayName("Create a reservation with valid data")
     @ParameterizedTest
     @MethodSource("sampleReservationData")
-    void createReservationTest() {
+    void createReservationTest(String referrer, String source, int supplierId, int productId, int quantity, int itemId, int partId, int operatorId) {
 
         JSONObject payload = new JSONObject();
         payload.put("referrer", referrer);
@@ -49,18 +49,17 @@ public class ReservationCreateTest {
         Assertions.assertThat(createReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = createReservationResponse.jsonPath();
-        Assertions.assertThat(json.getString("productId")).isEqualTo(productId);
-        Assertions.assertThat(json.getString("supplierId")).isEqualTo(supplierId);
-        Assertions.assertThat(json.getString("quantity")).isEqualTo(quantity);
-        Assertions.assertThat(json.getString("reservationId")).isEqualTo(reservationId);
+        Assertions.assertThat(json.getInt("productId")).isEqualTo(productId);
+        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierId);
+        Assertions.assertThat(json.getInt("quantity")).isEqualTo(quantity);
+//        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
 
     }
 
     private static Stream<Arguments> sampleReservationData() {
         return Stream.of(
-//                Arguments.of(referrer, source, supplierId, productId, quantity, itemId, partId, operatorId),
-                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 1, 1, 69),
-                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 1, 2, 69)
+                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 1, 7, 69),
+                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 1, 8, 69)
         );
     }
 }
