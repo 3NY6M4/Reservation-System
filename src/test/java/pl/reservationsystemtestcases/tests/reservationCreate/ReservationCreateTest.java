@@ -15,24 +15,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 import pl.reservationsystemtestcases.request.reservationCreate.ReservationCreateRequest;
 import java.util.stream.Stream;
 
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationCreateTest {
-
-    private String referrer ;
-    private String source ;
-    private int supplierId;
-    private int productId;
-    private int quantity;
-    private int itemId;
-    private int partId;
-    private int operatorId;
-//  private String isComponent = "false";
-
-    private String reservationId;
 
     @DisplayName("Create a reservation with valid data")
     @ParameterizedTest
-    @MethodSource("sampleReservationData")
+    @MethodSource("sampleCreateReservationData")
     void createReservationTest(String referrer, String source, int supplierId, int productId, int quantity, int itemId, int partId, int operatorId) {
 
         JSONObject payload = new JSONObject();
@@ -56,10 +44,10 @@ public class ReservationCreateTest {
 
     }
 
-    private static Stream<Arguments> sampleReservationData() {
+    private static Stream<Arguments> sampleCreateReservationData() {
         return Stream.of(
-                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 1, 7, 69),
-                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 1, 8, 69)
+                Arguments.of("PANEL", "item list - supplier change", 3323, 7887950, 2, 1, 9, 69),
+                Arguments.of("PANEL", "item list - supplier change", 1133, 8365693, 2, 1, 10, 69)
         );
     }
 }
