@@ -6,7 +6,6 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import pl.reservationsystemtestcases.properties.ReservationSystemProperties;
-import pl.reservationsystemtestcases.secrets.ReservationSystemSecrets;
 
 public class BaseRequest {
 

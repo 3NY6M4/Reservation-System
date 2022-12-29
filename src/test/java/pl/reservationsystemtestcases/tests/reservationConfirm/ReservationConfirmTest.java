@@ -70,7 +70,7 @@ public class ReservationConfirmTest {
         payload.put("partId", partId);
         payload.put("operatorId", operatorId);
 
-        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(payload, reservationId);
+        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(payload);
         Assertions.assertThat(assignReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = assignReservationResponse.jsonPath();

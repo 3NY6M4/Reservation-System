@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class ReservationAssignRequest {
 
-    public static Response reservationAssignRequest(JSONObject payload, int reservationId) {
+    public static Response reservationAssignRequest(JSONObject payload) {
 
         return given()
                 .spec(BaseRequest.requestSetup())
