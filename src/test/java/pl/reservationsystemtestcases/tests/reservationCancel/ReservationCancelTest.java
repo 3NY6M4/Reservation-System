@@ -4,6 +4,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
+import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -16,19 +17,23 @@ import pl.reservationsystemtestcases.request.reservationConfirm.ReservationConfi
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.random.RandomGenerator;
 import java.util.stream.Stream;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationCancelTest {
 
-    private String supplierId;
-    private String productId;
-    private String quantity;
-    private String itemId;
-    private String partId;
-    private String isComponent = "false";
-
-    private String reservationId;
+    private static int reservationId;
+    private static String referrer = "PANEL";
+    private static String source = "item list - supplier change";
+    private static int supplierAMP;
+    private static int supplierSMP;
+    private static int productAMP;
+    private static int productSMP;
+    private static int reservationQuantity;
+    private static int operatorId = 69;
+    private static int itemId = RandomGenerator.getDefault().nextInt(9999);
+    private static int partId = RandomGenerator.getDefault().nextInt(9999);
 
     @Order(1)
     @DisplayName("Create a reservation with valid data")
@@ -63,15 +68,20 @@ public class ReservationCancelTest {
     @MethodSource("sampleConfirmReservationData")
     void confirmReservationTest(String supplierId, String productId, String quantity, String itemId, String partId, String isComponent) {
 
-        Map<String, String> queryParams = new HashMap<String, String>();
-        queryParams.put("supplierId", supplierId);
-        queryParams.put("productId", productId);
-        queryParams.put("quantity", quantity);
-        queryParams.put("itemId", itemId);
-        queryParams.put("partId", partId);
-        queryParams.put("isComponent", isComponent);
+        JSONObject payload = new JSONObject();
+        payload.put("referrer", referrer);
+        payload.put("source", source);
+        payload.put("id", reservationId);
+        payload.put("supplierId", supplierAMP);
+        payload.put("supplierId", supplierSMP);
+        payload.put("productId", productAMP);
+        payload.put("productId", productSMP);
+        payload.put("quantity", reservationQuantity);
+        payload.put("operatorId", operatorId);
+        payload.put("itemId", itemId);
+        payload.put("partId", partId);
 
-        final Response confirmReservationResponse = ReservationConfirmRequest.reservationConfirmRequest(queryParams);
+        final Response confirmReservationResponse = ReservationConfirmRequest.reservationConfirmRequest(payload, reservationId);
 
         Assertions.assertThat(confirmReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
         JsonPath json = confirmReservationResponse.jsonPath();
