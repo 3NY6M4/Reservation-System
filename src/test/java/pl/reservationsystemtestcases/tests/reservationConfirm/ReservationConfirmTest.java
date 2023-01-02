@@ -33,6 +33,7 @@ public class ReservationConfirmTest {
     private static int operatorId = 69;
     private static int itemId = RandomGenerator.getDefault().nextInt(9999);
     private static int partId = RandomGenerator.getDefault().nextInt(9999);
+    private static String state = "CONFIRMED";
 
     @Order(1)
     @DisplayName("Create unassign reservation with valid data")
@@ -96,6 +97,8 @@ public class ReservationConfirmTest {
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
         Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
         Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
+
+        reservationId = json.getInt("id");
     }
     private static Stream<Arguments> sampleAssignReservationData() {
         return Stream.of(
@@ -121,7 +124,6 @@ public class ReservationConfirmTest {
         payload.put("itemId", itemId);
         payload.put("partId", partId);
 
-
         final Response confirmReservationResponse = ReservationConfirmRequest.reservationConfirmRequest(payload, reservationId);
         Assertions.assertThat(confirmReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
 
@@ -132,12 +134,15 @@ public class ReservationConfirmTest {
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
         Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
         Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
+        Assertions.assertThat(json.getString("state")).isEqualTo(state);
+
+        reservationId = json.getInt("id");
     }
 
     private static Stream<Arguments> sampleConfirmReservationData() {
         return Stream.of(
 //                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId, reservationId),
-                Arguments.of(reservationId, referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId)
+                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId)
         );
     }
 }
