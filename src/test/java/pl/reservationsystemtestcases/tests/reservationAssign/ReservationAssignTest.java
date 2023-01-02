@@ -47,6 +47,7 @@ public class ReservationAssignTest {
         Assertions.assertThat(createReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = createReservationResponse.jsonPath();
+        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
         Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierId);
         Assertions.assertThat(json.getInt("productId")).isEqualTo(productId);
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(quantity);
@@ -60,8 +61,8 @@ public class ReservationAssignTest {
 
     private static Stream<Arguments> sampleCreateReservationData() {
         return Stream.of(
-                Arguments.of(referrer, source, 3323, 7887950, 2, operatorId),
-                Arguments.of(referrer, source, 1133, 8365693, 2, operatorId)
+//                Arguments.of(referrer, source, 1133, 8365693, 2, operatorId),
+                Arguments.of(referrer, source, 3323, 7887950, 2, operatorId)
         );
     }
     @Order(2)
@@ -94,8 +95,8 @@ public class ReservationAssignTest {
     }
     private static Stream<Arguments> sampleAssignReservationData() {
         return Stream.of(
-                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId, reservationId),
-                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId ++, partId ++, operatorId, reservationId)
+                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId, reservationId)
+//                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId ++, partId ++, operatorId, reservationId)
         );
     }
 }

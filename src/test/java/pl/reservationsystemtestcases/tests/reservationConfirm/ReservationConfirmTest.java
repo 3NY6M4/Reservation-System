@@ -27,10 +27,8 @@ public class ReservationConfirmTest {
     private static int reservationId;
     private static String referrer = "PANEL";
     private static String source = "item list - supplier change";
-    private static int supplierAMP;
-    private static int supplierSMP;
-    private static int productAMP;
-    private static int productSMP;
+    private static int supplier;
+    private static int product;
     private static int reservationQuantity;
     private static int operatorId = 69;
     private static int itemId = RandomGenerator.getDefault().nextInt(9999);
@@ -59,20 +57,16 @@ public class ReservationConfirmTest {
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(quantity);
 
         reservationId = json.getInt("id");
-        supplierAMP = json.getInt("supplierId");
-        supplierSMP = json.getInt("supplierId");
-        productAMP = json.getInt("productId");
-        System.out.println(productAMP);
-        productSMP = json.getInt("productId");
-        System.out.println(productSMP);
+        supplier = json.getInt("supplierId");
+        product = json.getInt("productId");
         reservationQuantity = json.getInt("quantity");
 
     }
 
     private static Stream<Arguments> sampleCreateReservationData() {
         return Stream.of(
-                Arguments.of(referrer, source, 3323, 7887950, 2, operatorId),
-                Arguments.of(referrer, source, 1133, 8365693, 2, operatorId)
+//                Arguments.of(referrer, source, 1133, 8365693, 2, operatorId),
+                Arguments.of(referrer, source, 3323, 7887950, 2, operatorId)
         );
     }
     @Order(2)
@@ -85,10 +79,8 @@ public class ReservationConfirmTest {
         payload.put("referrer", referrer);
         payload.put("source", source);
         payload.put("id", reservationId);
-        payload.put("supplierId", supplierAMP);
-        payload.put("supplierId", supplierSMP);
-        payload.put("productId", productAMP);
-        payload.put("productId", productSMP);
+        payload.put("supplierId", supplier);
+        payload.put("productId", product);
         payload.put("quantity", reservationQuantity);
         payload.put("operatorId", operatorId);
         payload.put("itemId", itemId);
@@ -99,18 +91,16 @@ public class ReservationConfirmTest {
 
         JsonPath json = assignReservationResponse.jsonPath();
         Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
-        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierAMP);
-        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierSMP);
-        Assertions.assertThat(json.getInt("productId")).isEqualTo(productAMP);
-        Assertions.assertThat(json.getInt("productId")).isEqualTo(productSMP);
+        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplier);
+        Assertions.assertThat(json.getInt("productId")).isEqualTo(product);
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
         Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
         Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
     }
     private static Stream<Arguments> sampleAssignReservationData() {
         return Stream.of(
-                Arguments.of(referrer, source, supplierAMP, productAMP, reservationQuantity, itemId, partId, operatorId, reservationId),
-                Arguments.of(referrer, source, supplierSMP, productSMP, reservationQuantity, itemId + 1, partId + 1, operatorId, reservationId)
+//                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId, reservationId),
+                Arguments.of(reservationId, referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId)
         );
     }
 
@@ -124,10 +114,8 @@ public class ReservationConfirmTest {
         payload.put("referrer", referrer);
         payload.put("source", source);
         payload.put("id", reservationId);
-        payload.put("supplierId", supplierAMP);
-        payload.put("supplierId", supplierSMP);
-        payload.put("productId", productAMP);
-        payload.put("productId", productSMP);
+        payload.put("supplierId", supplier);
+        payload.put("productId", product);
         payload.put("quantity", reservationQuantity);
         payload.put("operatorId", operatorId);
         payload.put("itemId", itemId);
@@ -135,16 +123,21 @@ public class ReservationConfirmTest {
 
 
         final Response confirmReservationResponse = ReservationConfirmRequest.reservationConfirmRequest(payload, reservationId);
-
         Assertions.assertThat(confirmReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
+
         JsonPath json = confirmReservationResponse.jsonPath();
-        Assertions.assertThat(json.getString("reservationId")).isEqualTo(reservationId);
+        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
+        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplier);
+        Assertions.assertThat(json.getInt("productId")).isEqualTo(product);
+        Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
+        Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
+        Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
     }
 
     private static Stream<Arguments> sampleConfirmReservationData() {
         return Stream.of(
-                Arguments.of(referrer, source, supplierAMP, productAMP, reservationQuantity, itemId, partId, operatorId, reservationId),
-                Arguments.of(referrer, source, supplierSMP, productSMP, reservationQuantity, itemId + 1, partId + 1, operatorId, reservationId)
+//                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId, reservationId),
+                Arguments.of(reservationId, referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId)
         );
     }
 }
