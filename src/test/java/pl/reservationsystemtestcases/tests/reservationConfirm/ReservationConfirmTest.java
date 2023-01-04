@@ -15,9 +15,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import pl.reservationsystemtestcases.request.reservationAssign.ReservationAssignRequest;
 import pl.reservationsystemtestcases.request.reservationConfirm.ReservationConfirmRequest;
 import pl.reservationsystemtestcases.request.reservationCreate.ReservationCreateRequest;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.random.RandomGenerator;
 import java.util.stream.Stream;
 
@@ -25,15 +22,15 @@ import java.util.stream.Stream;
 public class ReservationConfirmTest {
 
     private static int reservationId;
-    private static String referrer = "PANEL";
-    private static String source = "item list - supplier change";
+    private final static String referrer = "PANEL";
+    private final static String source = "item list - supplier change";
     private static int supplier;
     private static int product;
     private static int reservationQuantity;
-    private static int operatorId = 69;
+    private final static int operatorId = 69;
     private static int itemId = RandomGenerator.getDefault().nextInt(9999);
     private static int partId = RandomGenerator.getDefault().nextInt(9999);
-    private static String state = "CONFIRMED";
+    private final static String state = "CONFIRMED";
 
     @Order(1)
     @DisplayName("Create unassign reservation with valid data")

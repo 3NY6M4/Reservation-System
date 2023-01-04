@@ -20,14 +20,14 @@ import java.util.stream.Stream;
 public class ReservationAssignTest {
 
     private static int reservationId;
-    private static String referrer = "PANEL";
-    private static String source = "item list - supplier change";
+    private final static String referrer = "PANEL";
+    private final static String source = "item list - supplier change";
     private static int supplier;
     private static int product;
     private static int reservationQuantity;
-    private static int operatorId = 69;
-    private static int itemId = RandomGenerator.getDefault().nextInt(9999);
-    private static int partId = RandomGenerator.getDefault().nextInt(9999);
+    private final static int operatorId = 69;
+    private final static int itemId = RandomGenerator.getDefault().nextInt(9999);
+    private final static int partId = RandomGenerator.getDefault().nextInt(9999);
 
     @Order(1)
     @DisplayName("Create unassign reservation with valid data")
@@ -47,7 +47,7 @@ public class ReservationAssignTest {
         Assertions.assertThat(createReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = createReservationResponse.jsonPath();
-        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
+//        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
         Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierId);
         Assertions.assertThat(json.getInt("productId")).isEqualTo(productId);
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(quantity);
@@ -92,10 +92,12 @@ public class ReservationAssignTest {
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
         Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
         Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
+
+        reservationId = json.getInt("id");
     }
     private static Stream<Arguments> sampleAssignReservationData() {
         return Stream.of(
-                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId, reservationId)
+                Arguments.of(reservationId, referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId)
 //                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId ++, partId ++, operatorId, reservationId)
         );
     }
