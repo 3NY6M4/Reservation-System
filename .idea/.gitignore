@@ -1,4 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+.properties
 /src/main/java/pl/reservationsystemtestcase/secrets/ReservationSystemSecrets.java
