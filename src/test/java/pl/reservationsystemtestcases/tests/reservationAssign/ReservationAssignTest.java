@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import pl.reservationsystemtestcases.request.reservationAssign.ReservationAssignRequest;
 import pl.reservationsystemtestcases.request.reservationCreate.ReservationCreateRequest;
+import pl.reservationsystemtestcases.tests.reservationCreate.ReservationCreateTest;
 
 import java.util.Random;
 import java.util.random.RandomGenerator;
@@ -43,7 +44,7 @@ public class ReservationAssignTest {
         payload.put("quantity", quantity);
         payload.put("operatorId", operatorId);
 
-        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload);
+        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload, itemId, partId);
         Assertions.assertThat(createReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = createReservationResponse.jsonPath();
@@ -61,10 +62,11 @@ public class ReservationAssignTest {
 
     private static Stream<Arguments> sampleCreateReservationData() {
         return Stream.of(
-//                Arguments.of(referrer, source, 1133, 8365693, 2, operatorId),
+                Arguments.of(referrer, source, 1133, 8365693, 2, operatorId),
                 Arguments.of(referrer, source, 3323, 7887950, 2, operatorId)
         );
     }
+
     @Order(2)
     @DisplayName("Assign a reservation with valid data")
     @ParameterizedTest
@@ -86,6 +88,7 @@ public class ReservationAssignTest {
         Assertions.assertThat(assignReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = assignReservationResponse.jsonPath();
+
         Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
         Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplier);
         Assertions.assertThat(json.getInt("productId")).isEqualTo(product);
@@ -93,12 +96,11 @@ public class ReservationAssignTest {
         Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
         Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
 
-        reservationId = json.getInt("id");
     }
     private static Stream<Arguments> sampleAssignReservationData() {
         return Stream.of(
-                Arguments.of(reservationId, referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId)
-//                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId ++, partId ++, operatorId, reservationId)
+                Arguments.of(reservationId, referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId),
+                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId + 1, partId + 1, operatorId, reservationId)
         );
     }
 }

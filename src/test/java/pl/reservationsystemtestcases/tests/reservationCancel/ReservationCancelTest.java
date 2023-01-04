@@ -82,7 +82,6 @@ public class ReservationCancelTest {
         payload.put("partId", partId);
 
         final Response confirmReservationResponse = ReservationConfirmRequest.reservationConfirmRequest(payload, reservationId);
-
         Assertions.assertThat(confirmReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
         JsonPath json = confirmReservationResponse.jsonPath();
         Assertions.assertThat(json.getString("reservationId")).isEqualTo(reservationId);
