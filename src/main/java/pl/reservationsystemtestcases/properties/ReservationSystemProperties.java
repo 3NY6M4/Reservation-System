@@ -14,3 +14,4 @@ public class ReservationSystemProperties {
         return ResourceBundle.getBundle("reservation").getString(key);
     }
 }
+

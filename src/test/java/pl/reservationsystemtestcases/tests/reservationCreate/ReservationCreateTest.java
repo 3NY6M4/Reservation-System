@@ -7,7 +7,6 @@ import org.assertj.core.api.Assertions;
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -20,17 +19,20 @@ import java.util.stream.Stream;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationCreateTest {
 
-    private static int reservationId;
-    private final static String referrer = "PANEL";
-    private final static String source = "item list - supplier change";
-    private final static int operatorId = 69;
-    private static int itemId = RandomGenerator.getDefault().nextInt();
-    private static int partId = RandomGenerator.getDefault().nextInt();
+    public static int reservationId;
+    public final static String referrer = "PANEL";
+    public final static String source = "item list - supplier change";
+    public final static int operatorId = 69;
+    public static int supplier;
+    public static int product;
+    public static int reservationQuantity;
+    public static int itemId = RandomGenerator.getDefault().nextInt();
+    public static int partId = RandomGenerator.getDefault().nextInt();
 
     @DisplayName("Create a reservation with valid data")
     @ParameterizedTest
     @MethodSource("sampleCreateReservationData")
-    void createReservationTest(int supplier, int product, int reservationQuantity) {
+    public void createReservationTest(int supplier, int product, int reservationQuantity) {
 
         JSONObject payload = new JSONObject();
         payload.put("referrer", referrer);
@@ -42,7 +44,7 @@ public class ReservationCreateTest {
 //        payload.put("itemId", itemId);
 //        payload.put("partId", partId);
 
-        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload, partId , itemId);
+        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload, partId, itemId);
         Assertions.assertThat(createReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = createReservationResponse.jsonPath();
@@ -58,7 +60,7 @@ public class ReservationCreateTest {
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
     }
 
-    private static Stream<Arguments> sampleCreateReservationData() {
+    public static Stream<Arguments> sampleCreateReservationData() {
         return Stream.of(
                 Arguments.of(1133, 8365693, 2, partId, itemId, operatorId, referrer, source),
                 Arguments.of(3323, 7887950, 2, partId, itemId, operatorId, referrer, source)

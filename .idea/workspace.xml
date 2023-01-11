@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7953e018-75c9-4376-be46-2d36f099d1fe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/reservationsystemtestcases/properties/ReservationSystemProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/reservationsystemtestcases/properties/ReservationSystemProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/reservationsystemtestcases/tests/reservationAssign/ReservationAssignTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/reservationsystemtestcases/tests/reservationAssign/ReservationAssignTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/reservationsystemtestcases/tests/reservationCreate/ReservationCreateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/reservationsystemtestcases/tests/reservationCreate/ReservationCreateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/.env" beforeDir="false" afterPath="$PROJECT_DIR$/target/properties.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/properties/ReservationSystemProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/properties/ReservationSystemProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/BasketReservationURL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/BasketReservationURL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/ReservationSystemURL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/ReservationSystemURL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/reservation.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/reservation.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/BaseRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/BaseRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketAssign/BasketAssignRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketAssign/BasketAssignRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketCancel/BasketCancelRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketCancel/BasketCancelRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketCreate/BasketCreateRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketCreate/BasketCreateRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketDelete/BasketDeleteRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketDelete/BasketDeleteRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketForce/BasketForceRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/basketForce/BasketForceRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationAssign/ReservationAssignRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationAssign/ReservationAssignRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationCancel/ReservationCancelRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationCancel/ReservationCancelRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationConfirm/ReservationConfirmRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationConfirm/ReservationConfirmRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationCreate/ReservationCreateRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationCreate/ReservationCreateRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationForce/ReservationForceRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationForce/ReservationForceRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketAssign/BasketAssignTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketAssign/BasketAssignTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketCancel/BasketCancelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketCancel/BasketCancelTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketCreate/BasketCreateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketCreate/BasketCreateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketForce/BasketForceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/basketForce/BasketForceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationAssign/ReservationAssignTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationAssign/ReservationAssignTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCancel/ReservationCancelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCancel/ReservationCancelTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationConfirm/ReservationConfirmTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationConfirm/ReservationConfirmTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCreate/ReservationCreateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCreate/ReservationCreateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationForce/ReservationForceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationForce/ReservationForceTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HfnRZeRa6gOStLmdeSjZAWm5Ua" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dmolik\IdeaProjects\ReservationSystemTestCases\src" />
+      <recent name="C:\Users\dmolik\IdeaProjects\ReservationSystemTestCases\target" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ReservationCreateTest">
+    <configuration name="BasketCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservationSystemTestCases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.reservationsystemtestcases.tests.basketCreate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.reservationsystemtestcases.tests.basketCreate" />
+      <option name="MAIN_CLASS_NAME" value="pl.reservationsystemtestcases.tests.basketCreate.BasketCreateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReservationAssignTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservationSystemTestCases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.reservationsystemtestcases.tests.reservationAssign.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.reservationsystemtestcases.tests.reservationAssign" />
+      <option name="MAIN_CLASS_NAME" value="pl.reservationsystemtestcases.tests.reservationAssign.ReservationAssignTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReservationConfirmTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservationSystemTestCases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.reservationsystemtestcases.tests.reservationConfirm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.reservationsystemtestcases.tests.reservationConfirm" />
+      <option name="MAIN_CLASS_NAME" value="pl.reservationsystemtestcases.tests.reservationConfirm.ReservationConfirmTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReservationCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservationSystemTestCases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.reservationsystemtestcases.tests.reservationCreate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.reservationsystemtestcases.tests.reservationCreate" />
+      <option name="MAIN_CLASS_NAME" value="pl.reservationsystemtestcases.tests.reservationCreate.ReservationCreateTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReservationForceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ReservationSystemTestCases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.reservationsystemtestcases.tests.reservationForce.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.reservationsystemtestcases.tests.reservationForce" />
+      <option name="MAIN_CLASS_NAME" value="pl.reservationsystemtestcases.tests.reservationForce.ReservationForceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ReservationCreateTest" />
+        <item itemvalue="JUnit.ReservationAssignTest" />
+        <item itemvalue="JUnit.ReservationConfirmTest" />
+        <item itemvalue="JUnit.ReservationForceTest" />
+        <item itemvalue="JUnit.BasketCreateTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7953e018-75c9-4376-be46-2d36f099d1fe" name="Changes" comment="" />
+      <created>1668685009275</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668685009275</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ReservationSystemTestCases$CreateReservationTest.ic" NAME="CreateReservationTest Coverage Results" MODIFIED="1671194276125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>pl.reservationsystemtestcases.tests.reservationCreate.*</FILTER>
+    </SUITE>
+  </component>
+</project>

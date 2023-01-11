@@ -10,71 +10,29 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import pl.reservationsystemtestcases.request.reservationAssign.ReservationAssignRequest;
-import pl.reservationsystemtestcases.request.reservationCreate.ReservationCreateRequest;
 import pl.reservationsystemtestcases.tests.reservationCreate.ReservationCreateTest;
-
-import java.util.Random;
-import java.util.random.RandomGenerator;
 import java.util.stream.Stream;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationAssignTest {
 
-    private static int reservationId;
-    private final static String referrer = "PANEL";
-    private final static String source = "item list - supplier change";
+    private final static String referrer = ReservationCreateTest.referrer;
+    private final static String source = ReservationCreateTest.source;
+    private final static int operatorId = ReservationCreateTest.operatorId;
+    private static int reservationId = ReservationCreateTest.reservationId;
     private static int supplier;
     private static int product;
     private static int reservationQuantity;
-    private final static int operatorId = 69;
-    private final static int itemId = RandomGenerator.getDefault().nextInt(9999);
-    private final static int partId = RandomGenerator.getDefault().nextInt(9999);
+    private static int itemId = ReservationCreateTest.itemId;
+    private static int partId = ReservationCreateTest.partId;
 
-    @Order(1)
-    @DisplayName("Create unassign reservation with valid data")
-    @ParameterizedTest
-    @MethodSource("sampleCreateReservationData")
-    void createUnAssignReservationTest(String referrer, String source, int supplierId, int productId, int quantity, int operatorId) {
-
-        JSONObject payload = new JSONObject();
-        payload.put("referrer", referrer);
-        payload.put("source", source);
-        payload.put("supplierId", supplierId);
-        payload.put("productId", productId);
-        payload.put("quantity", quantity);
-        payload.put("operatorId", operatorId);
-
-        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload, itemId, partId);
-        Assertions.assertThat(createReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
-
-        JsonPath json = createReservationResponse.jsonPath();
-//        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
-        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplierId);
-        Assertions.assertThat(json.getInt("productId")).isEqualTo(productId);
-        Assertions.assertThat(json.getInt("quantity")).isEqualTo(quantity);
-
-        reservationId = json.getInt("id");
-        supplier = json.getInt("supplierId");
-        product = json.getInt("productId");
-        reservationQuantity = json.getInt("quantity");
-
-    }
-
-    private static Stream<Arguments> sampleCreateReservationData() {
-        return Stream.of(
-                Arguments.of(referrer, source, 1133, 8365693, 2, operatorId),
-                Arguments.of(referrer, source, 3323, 7887950, 2, operatorId)
-        );
-    }
-
-    @Order(2)
     @DisplayName("Assign a reservation with valid data")
     @ParameterizedTest
     @MethodSource("sampleAssignReservationData")
-    void assignReservationTest() {
+    void assignReservationTest(int supplier, int product, int reservationQuantity) {
 
         JSONObject payload = new JSONObject();
-        payload.put("referrer", referrer);
+        payload.put("referrer", ReservationCreateTest.referrer);
         payload.put("source", source);
         payload.put("id", reservationId);
         payload.put("supplierId", supplier);
