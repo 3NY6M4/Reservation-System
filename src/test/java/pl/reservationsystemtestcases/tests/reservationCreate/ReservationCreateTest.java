@@ -26,6 +26,7 @@ public class ReservationCreateTest {
     public static int supplier;
     public static int product;
     public static int reservationQuantity;
+    public static String state;
     public static int itemId = RandomGenerator.getDefault().nextInt();
     public static int partId = RandomGenerator.getDefault().nextInt();
 
@@ -44,7 +45,7 @@ public class ReservationCreateTest {
 //        payload.put("itemId", itemId);
 //        payload.put("partId", partId);
 
-        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload, partId, itemId);
+        final Response createReservationResponse = ReservationCreateRequest.reservationCreateRequest(payload);
         Assertions.assertThat(createReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = createReservationResponse.jsonPath();
@@ -53,17 +54,20 @@ public class ReservationCreateTest {
         supplier = json.getInt("supplierId");
         product = json.getInt("productId");
         reservationQuantity = json.getInt("quantity");
+        state = json.getString("state");
 
         Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
-        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplier);
-        Assertions.assertThat(json.getInt("productId")).isEqualTo(product);
+        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(sampleCreateReservationData());
+        Assertions.assertThat(json.getInt("productId")).isEqualTo(sampleCreateReservationData());
         Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
+        Assertions.assertThat(json.getString("state")).isEqualTo("UNCONFIRMED");
+
     }
 
     public static Stream<Arguments> sampleCreateReservationData() {
         return Stream.of(
-                Arguments.of(1133, 8365693, 2, partId, itemId, operatorId, referrer, source),
-                Arguments.of(3323, 7887950, 2, partId, itemId, operatorId, referrer, source)
+                Arguments.of(1133, 8365693, 2, partId, itemId, operatorId, referrer, source, state),
+                Arguments.of(3323, 7887950, 2, partId, itemId, operatorId, referrer, source, state)
         );
     }
 }

@@ -16,49 +16,42 @@ import java.util.stream.Stream;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationAssignTest {
 
-    private final static String referrer = ReservationCreateTest.referrer;
-    private final static String source = ReservationCreateTest.source;
-    private final static int operatorId = ReservationCreateTest.operatorId;
-    private static int reservationId = ReservationCreateTest.reservationId;
-    private static int supplier;
-    private static int product;
-    private static int reservationQuantity;
-    private static int itemId = ReservationCreateTest.itemId;
-    private static int partId = ReservationCreateTest.partId;
 
     @DisplayName("Assign a reservation with valid data")
     @ParameterizedTest
     @MethodSource("sampleAssignReservationData")
-    void assignReservationTest(int supplier, int product, int reservationQuantity) {
+    void assignReservationTest() {
 
         JSONObject payload = new JSONObject();
         payload.put("referrer", ReservationCreateTest.referrer);
-        payload.put("source", source);
-        payload.put("id", reservationId);
-        payload.put("supplierId", supplier);
-        payload.put("productId", product);
-        payload.put("quantity", reservationQuantity);
-        payload.put("operatorId", operatorId);
-        payload.put("itemId", itemId);
-        payload.put("partId", partId);
+        payload.put("source", ReservationCreateTest.source);
+        payload.put("id", ReservationCreateTest.reservationId);
+        payload.put("supplierId", ReservationCreateTest.supplier);
+        payload.put("productId", ReservationCreateTest.product);
+        payload.put("quantity", ReservationCreateTest.reservationQuantity);
+        payload.put("operatorId", ReservationCreateTest.operatorId);
+        payload.put("itemId", ReservationCreateTest.itemId);
+        payload.put("partId", ReservationCreateTest.partId);
 
-        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(payload, reservationId);
+        final Response assignReservationResponse = ReservationAssignRequest.reservationAssignRequest(payload, ReservationCreateTest.reservationId);
         Assertions.assertThat(assignReservationResponse.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 
         JsonPath json = assignReservationResponse.jsonPath();
 
-        Assertions.assertThat(json.getInt("id")).isEqualTo(reservationId);
-        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(supplier);
-        Assertions.assertThat(json.getInt("productId")).isEqualTo(product);
-        Assertions.assertThat(json.getInt("quantity")).isEqualTo(reservationQuantity);
-        Assertions.assertThat(json.getInt("itemId")).isEqualTo(itemId);
-        Assertions.assertThat(json.getInt("partId")).isEqualTo(partId);
+        ReservationCreateTest.reservationId = json.getInt("id");
+
+        Assertions.assertThat(json.getInt("id")).isEqualTo(ReservationCreateTest.reservationId);
+        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(ReservationCreateTest.supplier);
+        Assertions.assertThat(json.getInt("productId")).isEqualTo(ReservationCreateTest.product);
+        Assertions.assertThat(json.getInt("quantity")).isEqualTo(ReservationCreateTest.reservationQuantity);
+        Assertions.assertThat(json.getInt("itemId")).isEqualTo(ReservationCreateTest.itemId);
+        Assertions.assertThat(json.getInt("partId")).isEqualTo(ReservationCreateTest.partId);
 
     }
     private static Stream<Arguments> sampleAssignReservationData() {
         return Stream.of(
-                Arguments.of(reservationId, referrer, source, supplier, product, reservationQuantity, itemId, partId, operatorId),
-                Arguments.of(referrer, source, supplier, product, reservationQuantity, itemId + 1, partId + 1, operatorId, reservationId)
+                Arguments.of(ReservationCreateTest.reservationId, ReservationCreateTest.referrer, ReservationCreateTest.source, ReservationCreateTest.supplier, ReservationCreateTest.product, ReservationCreateTest.reservationQuantity, ReservationCreateTest.itemId, ReservationCreateTest.partId, ReservationCreateTest.operatorId),
+                Arguments.of(ReservationCreateTest.reservationId, ReservationCreateTest.referrer, ReservationCreateTest.source, ReservationCreateTest.supplier, ReservationCreateTest.product, ReservationCreateTest.reservationQuantity, ReservationCreateTest.itemId, ReservationCreateTest.partId, ReservationCreateTest.operatorId)
         );
     }
 }

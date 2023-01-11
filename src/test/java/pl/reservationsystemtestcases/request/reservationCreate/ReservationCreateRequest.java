@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class ReservationCreateRequest {
 
-    public static Response reservationCreateRequest(JSONObject payload, int itemId, int partId) {
+    public static Response reservationCreateRequest(JSONObject payload) {
 
         return given()
                 .spec(BaseRequest.requestSetup())
