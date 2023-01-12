@@ -2,3 +2,4 @@
 /shelf/
 /.idea/workspace.xml
 /src/main/java/pl/reservationsystemtestcase/secrets/ReservationSystemSecrets.java
+reservation.properties
