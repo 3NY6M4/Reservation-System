@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7953e018-75c9-4376-be46-2d36f099d1fe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/properties.env" beforeDir="false" afterPath="$PROJECT_DIR$/target/properties.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
