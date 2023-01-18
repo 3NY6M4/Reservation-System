@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7953e018-75c9-4376-be46-2d36f099d1fe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/properties.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/reservationsystemtestcases/url/BasketReservationURL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/reservationsystemtestcases/url/BasketReservationURL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/reservationsystemtestcases/url/ReservationSystemURL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/reservationsystemtestcases/url/ReservationSystemURL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/BasketReservationURL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/BasketReservationURL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/ReservationSystemURL.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/reservationsystemtestcases/url/ReservationSystemURL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/reservation.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/reservation.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationCreate/ReservationCreateRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/request/reservationCreate/ReservationCreateRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationAssign/ReservationAssignTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationAssign/ReservationAssignTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCancel/ReservationCancelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCancel/ReservationCancelTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationConfirm/ReservationConfirmTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationConfirm/ReservationConfirmTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCreate/ReservationCreateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationCreate/ReservationCreateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationForce/ReservationForceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/reservationsystemtestcases/tests/reservationForce/ReservationForceTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +64,7 @@
       <recent name="C:\Users\dmolik\IdeaProjects\ReservationSystemTestCases\target" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReservationCreateTest">
+  <component name="RunManager" selected="JUnit.ReservationAssignTest">
     <configuration name="BasketCreateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ReservationSystemTestCases" />
       <extension name="coverage">
@@ -132,8 +142,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReservationCreateTest" />
         <item itemvalue="JUnit.ReservationAssignTest" />
+        <item itemvalue="JUnit.ReservationCreateTest" />
         <item itemvalue="JUnit.ReservationConfirmTest" />
         <item itemvalue="JUnit.ReservationForceTest" />
         <item itemvalue="JUnit.BasketCreateTest" />

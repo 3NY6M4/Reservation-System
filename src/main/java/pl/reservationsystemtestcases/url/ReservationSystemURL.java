@@ -5,7 +5,7 @@ public class ReservationSystemURL {
     private ReservationSystemURL() {
     }
 
-    private static final String BASE_URL = "http://dev-inventory-app-1-mn-net-deb9.apri.run/";
+    private static final String BASE_URL = "http://dev-inventory-app-2.apri.run/";
     private static final String RESERVATION_CREATE = "api/reservation";
     private static final String RESERVATION_ASSIGN = "api/reservation/assign";
     private static final String RESERVATION_FORCE = "api/reservation/create/force";
