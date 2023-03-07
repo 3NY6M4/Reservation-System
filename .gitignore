@@ -1,1 +1,3 @@
 reservation.properties
+/src/main/java/pl/reservationsystemtestcase/secrets/ReservationSystemSecrets.java
+/src/main/resources/reservation.properties

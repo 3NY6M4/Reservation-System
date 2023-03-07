@@ -19,7 +19,6 @@ import java.util.stream.Stream;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationCancelTest {
 
-    @Order(1)
     @DisplayName("Cancel a reservation with valid data")
     @ParameterizedTest
     @MethodSource("sampleConfirmReservationData")

@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.json.JSONObject;
+import org.junit.Test;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -17,14 +18,16 @@ import java.util.stream.Stream;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ReservationAssignTest {
 
+    @Test
     @DisplayName("Assign a reservation with valid data")
     public void assignReservationTest() {
 
         JsonPath reservation = ReservationFixture.create(1, 18, 1);
-        JsonPath reservationAssigned = ReservationFixture.assign(
-                reservation.getInt("id"), reservation.getInt("supplierId"), reservation.getInt("productId"), reservation.getInt("quantity")
+        JsonPath reservationAssigned = ReservationFixture.assign(reservation.getInt("id"),
+                reservation.getInt("supplierId"),
+                reservation.getInt("productId"),
+                reservation.getInt("quantity")
         );
-
 
         Assertions.assertThat(reservationAssigned.getInt("id")).isEqualTo(reservation.getInt("id"));
         Assertions.assertThat(reservationAssigned.getInt("supplierId")).isEqualTo(reservation.getInt("supplierId"));

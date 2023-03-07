@@ -16,7 +16,6 @@ public class BaseRequest {
         requestBuilder.setContentType(ContentType.JSON);
         requestBuilder.addHeader("Authorization", "Bearer " + ReservationSystemProperties.getToken());
 //      requestBuilder.addQueryParam("token", ReservationSystemSecrets.getToken());
-//        requestBuilder.addQueryParam("panelSessionId", ReservationSystemSecrets.getPanelSessionId());
 //        requestBuilder.addQueryParam("phpSessionId", ReservationSystemSecrets.getPhpSessionId());
         requestBuilder.addFilter(new RequestLoggingFilter());
         requestBuilder.addFilter(new ResponseLoggingFilter());

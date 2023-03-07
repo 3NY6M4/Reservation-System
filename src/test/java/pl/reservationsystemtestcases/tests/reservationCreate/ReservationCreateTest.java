@@ -44,8 +44,6 @@ public class ReservationCreateTest {
         Assertions.assertThat(reservation.getInt("productId")).isEqualTo(product);
         Assertions.assertThat(reservation.getInt("quantity")).isEqualTo(reservationQuantity);
         Assertions.assertThat(reservation.getString("state")).isEqualTo(state);
-
-
     }
 
     public static Stream<Arguments> sampleCreateReservationData() {

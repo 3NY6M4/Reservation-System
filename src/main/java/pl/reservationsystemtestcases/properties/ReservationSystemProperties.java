@@ -4,7 +4,7 @@ import java.util.ResourceBundle;
 
 public class ReservationSystemProperties {
 
-    private static final String TOKEN = "inventory.api.token";
+    private static final String TOKEN = "api.token";
 
     public static String getToken(){
         return getProperty(TOKEN);

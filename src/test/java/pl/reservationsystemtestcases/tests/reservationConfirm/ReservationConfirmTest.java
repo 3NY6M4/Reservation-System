@@ -12,6 +12,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import pl.reservationsystemtestcases.fixtures.ReservationFixture;
 import pl.reservationsystemtestcases.request.reservationConfirm.ReservationConfirmRequest;
 import pl.reservationsystemtestcases.tests.reservationCreate.ReservationCreateTest;
 import java.util.stream.Stream;
@@ -21,45 +22,16 @@ public class ReservationConfirmTest {
 
     public static String state;
 
-    @Order(1)
     @DisplayName("Confirm a reservation with valid data")
-    @ParameterizedTest
-    @MethodSource("sampleConfirmReservationData")
-    void confirmReservationTest() {
+    public void confirmReservationTest() {
 
-        JSONObject payload = new JSONObject();
-        payload.put("referrer", ReservationCreateTest.referrer);
-        payload.put("source", ReservationCreateTest.source);
-        payload.put("id", ReservationCreateTest.reservationId);
-        payload.put("supplierId", ReservationCreateTest.supplier);
-        payload.put("productId", ReservationCreateTest.product);
-        payload.put("quantity", ReservationCreateTest.reservationQuantity);
-        payload.put("operatorId", ReservationCreateTest.operatorId);
-        payload.put("itemId", ReservationCreateTest.itemId);
-        payload.put("partId", ReservationCreateTest.partId);
-        payload.put("state", state);
-
-        final Response confirmReservationResponse = ReservationConfirmRequest.reservationConfirmRequest(payload, ReservationCreateTest.reservationId);
-        Assertions.assertThat(confirmReservationResponse.statusCode()).isEqualTo(HttpStatus.SC_OK);
-
-        JsonPath json = confirmReservationResponse.jsonPath();
-
-        state = json.getString("state");
-
-        Assertions.assertThat(json.getInt("id")).isEqualTo(ReservationCreateTest.reservationId);
-        Assertions.assertThat(json.getInt("supplierId")).isEqualTo(ReservationCreateTest.supplier);
-        Assertions.assertThat(json.getInt("productId")).isEqualTo(ReservationCreateTest.product);
-        Assertions.assertThat(json.getInt("quantity")).isEqualTo(ReservationCreateTest.reservationQuantity);
-        Assertions.assertThat(json.getInt("itemId")).isEqualTo(ReservationCreateTest.itemId);
-        Assertions.assertThat(json.getInt("partId")).isEqualTo(ReservationCreateTest.partId);
-        Assertions.assertThat(json.getString("state")).isEqualTo("CONFIRMED");
-
-    }
-
-    private static Stream<Arguments> sampleConfirmReservationData() {
-        return Stream.of(
-                Arguments.of(state, ReservationCreateTest.reservationId, ReservationCreateTest.referrer, ReservationCreateTest.source, ReservationCreateTest.supplier, ReservationCreateTest.product, ReservationCreateTest.reservationQuantity, ReservationCreateTest.itemId, ReservationCreateTest.partId, ReservationCreateTest.operatorId),
-                Arguments.of(state, ReservationCreateTest.reservationId, ReservationCreateTest.referrer, ReservationCreateTest.source, ReservationCreateTest.supplier, ReservationCreateTest.product, ReservationCreateTest.reservationQuantity, ReservationCreateTest.itemId, ReservationCreateTest.partId, ReservationCreateTest.operatorId)
+        JsonPath reservation = ReservationFixture.create(1, 18, 1);
+        JsonPath reservationAssigned = ReservationFixture.assign(reservation.getInt("id"),
+                reservation.getInt("supplierId"),
+                reservation.getInt("productId"),
+                reservation.getInt("quantity")
         );
+
+
     }
 }

@@ -37,14 +37,14 @@ public class ReservationFixture {
 
     private static JSONObject getJsonObject(int supplier, int product, int reservationQuantity) {
         JSONObject payload = new JSONObject();
-        payload.put("referrer", "PANEL");
-        payload.put("source", "item list - supplier change");
+        payload.put("referrer", "SYSTEM");
+        payload.put("source", "CHANGE");
         payload.put("supplierId", supplier);
         payload.put("productId", product);
         payload.put("quantity", reservationQuantity);
-        payload.put("operatorId", 69);
-        payload.put("itemId", itemId);
-        payload.put("partId", partId);
+        payload.put("operatorId", 96);
+//        payload.put("itemId", itemId);
+//        payload.put("partId", partId);
         return payload;
     }
 
